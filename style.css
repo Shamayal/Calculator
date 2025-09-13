@@ -1,0 +1,6 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-image: radial-gradient(#8558d2 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+}
