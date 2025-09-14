@@ -4,6 +4,7 @@
   font-family: "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
+
 body {
   min-height: 100vh;
   display: flex;
@@ -34,4 +35,24 @@ body {
   outline: none;
   word-wrap: break-word;
   word-break: break-all;
+}
+
+.key {
+  background: #333333;
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 70%;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+}
+
+.operator {
+  background: #ff9501;
+}
+
+.zero {
+  background: #a6a6a6;
+  color: #000000;
 }
