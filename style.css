@@ -65,8 +65,8 @@ button {
   grid-column-gap: 10px;
 }
 
-.zero {
+/* .zero {
   grid-column: span 2;
   width: 100%;
   border-radius: 30px;
-}
+} */
