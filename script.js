@@ -32,3 +32,32 @@ document.querySelectorAll(".operator").forEach(function (item) {
     }
   });
 });
+
+document.querySelectorAll(".other").forEach(function (item) {
+  item.addEventListener("click", function (e) {
+    const value = e.target.innerHTML.trim();
+    let current = inputValue.innerText;
+
+    if (value === "AC") {
+      inputValue.innerText = "0";
+    } else if (value === "DE") {
+      if (current.length > 1) {
+        inputValue.innerText = current.slice(0, -1);
+      } else {
+        inputValue.innerText = "0";
+      }
+    } else if (value === "+/-") {
+      try {
+        inputValue.innerText = String(eval(current) * -1);
+      } catch {
+        inputValue.innerText = "NaN";
+      }
+    } else if (value === "%") {
+      try {
+        inputValue.innerText = String(eval(current) / 100);
+      } catch {
+        inputValue.innerText = "NaN";
+      }
+    }
+  });
+});
