@@ -4,7 +4,7 @@ const inputValue = document.getElementById("display");
 document.querySelectorAll(".number").forEach(function (item) {
   item.addEventListener("click", function (e) {
     const value = e.target.innerHTML.trim();
-    let current = inputValue.innerText;
+    let current = inputValue.value;
     let lastChar = current.slice(-1);
 
     if (current === "NaN" || current === "0") {
@@ -27,28 +27,28 @@ document.querySelectorAll(".number").forEach(function (item) {
       }
     };
 
-    inputValue.innerText = current + value;
+    inputValue.value = current + value;
   });
 });
 
 document.querySelectorAll(".operator").forEach(function (item) {
   item.addEventListener("click", function (e) {
     const value = e.target.innerHTML.trim();
-    let current = inputValue.innerText;
+    let current = inputValue.value;
     let lastChar = current.slice(-1);
 
     if (value === "=") {
       try {
-        inputValue.innerText = eval(current);
+        inputValue.value = eval(current);
       } catch {
-        inputValue.innerText = "NaN";
+        inputValue.value = "NaN";
       }
     } else {
       // Avoid consecutive operators
       if ("+-*/".includes(lastChar) && "+-*/".includes(value)) {
-        inputValue.innerText = current.slice(0, -1) + value;
+        inputValue.value = current.slice(0, -1) + value;
       } else {
-        inputValue.innerText += value;
+        inputValue.value += value;
       }
     }
   });
@@ -57,27 +57,27 @@ document.querySelectorAll(".operator").forEach(function (item) {
 document.querySelectorAll(".other").forEach(function (item) {
   item.addEventListener("click", function (e) {
     const value = e.target.innerHTML.trim();
-    let current = inputValue.innerText;
+    let current = inputValue.value;
 
     if (value === "AC") {
-      inputValue.innerText = "0";
+      inputValue.value = "0";
     } else if (value === "DE") {
       if (current.length > 1) {
-        inputValue.innerText = current.slice(0, -1);
+        inputValue.value = current.slice(0, -1);
       } else {
-        inputValue.innerText = "0";
+        inputValue.value = "0";
       }
     } else if (value === "+/-") {
       try {
-        inputValue.innerText = String(eval(current) * -1);
+        inputValue.value = String(eval(current) * -1);
       } catch {
-        inputValue.innerText = "NaN";
+        inputValue.value = "NaN";
       }
     } else if (value === "%") {
       try {
-        inputValue.innerText = String(eval(current) / 100);
+        inputValue.value = String(eval(current) / 100);
       } catch {
-        inputValue.innerText = "NaN";
+        inputValue.value = "NaN";
       }
     }
   });
