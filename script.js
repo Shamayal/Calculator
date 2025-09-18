@@ -3,10 +3,31 @@ const inputValue = document.getElementById("display");
 
 document.querySelectorAll(".number").forEach(function (item) {
   item.addEventListener("click", function (e) {
-    if (inputValue.innerText === "NaN" || inputValue.innerText === "0") {
-      inputValue.innerText = "";
-    }
-    inputValue.innerText += e.target.innerHTML.trim();
+    const value = e.target.innerHTML.trim();
+    let current = inputValue.innerText;
+    let lastChar = current.slice(-1);
+
+    if (current === "NaN" || current === "0") {
+      current = "";
+    } 
+    
+    // Avoid multiple dots in the current number
+    if (value === ".") {
+      const lastOperatorIndex = Math.max(
+        current.lastIndexOf("+"), 
+        current.lastIndexOf("-"), 
+        current.lastIndexOf("*"), 
+        current.lastIndexOf("/")
+      );
+
+      const lastNumber = current.slice(lastOperatorIndex + 1);
+
+      if (lastNumber.includes(".")) {
+        return;
+      }
+    };
+
+    inputValue.innerText = current + value;
   });
 });
 
