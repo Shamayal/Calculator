@@ -15,23 +15,20 @@ document.querySelectorAll(".operator").forEach(function (item) {
     const value = e.target.innerHTML.trim();
     let current = inputValue.innerText;
     let lastChar = current.slice(-1);
-    console.log(value, current, lastChar)
-  })
-})
 
-
-// let lastValue = inputValue.innerText.substring(inputValue.innerText.length, inputValue.innerText.length - 1);
-// if (!isNaN(lastValue) && e.target.innerHTML === "=") {
-//   inputValue.innerText = eval(inputValue.innerText);
-// } else if (e.target.innerHTML === "AC") {
-//   inputValue.innerText = 0;
-// } else if (e.target.innerHTML === "DE") {
-//   inputValue.innerText = inputValue.innerText.substring(0, inputValue.innerText.length - 1);
-//   if (inputValue.innerText.length == 0) {
-//     inputValue.innerText = 0;
-//   }
-// } else {
-//   if (!isNaN(lastValue)) {
-//     inputValue.innerText += e.target.innerHTML;
-//   }
-// }
+    if (value === "=") {
+      try {
+        inputValue.innerText = eval(current);
+      } catch {
+        inputValue.innerText = "NaN";
+      }
+    } else {
+      // Avoid consecutive operators
+      if ("+-*/".includes(lastChar) && "+-*/".includes(value)) {
+        inputValue.innerText = current.slice(0, -1) + value;
+      } else {
+        inputValue.innerText += value;
+      }
+    }
+  });
+});
