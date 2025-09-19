@@ -82,3 +82,5 @@ document.querySelectorAll(".other").forEach(function (item) {
     }
   });
 });
+
+// Add logic to get rid of default zero when typing
