@@ -84,3 +84,8 @@ document.querySelectorAll(".other").forEach(function (item) {
 });
 
 // Add logic to get rid of default zero when typing
+inputValue.addEventListener("input", function () {
+  if (inputValue.value === "0") {
+    inputValue.value = "";
+  }
+});
