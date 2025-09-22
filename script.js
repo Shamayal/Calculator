@@ -82,3 +82,14 @@ document.querySelectorAll(".other").forEach(function (item) {
     }
   });
 });
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    let current = inputValue.value;
+    try {
+      inputValue.value = eval(current);
+    } catch {
+      inputValue.value = "NaN";
+    }
+  }
+});
