@@ -85,6 +85,8 @@ document.querySelectorAll(".other").forEach(function (item) {
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
+    e.preventDefault();
+    
     let current = inputValue.value;
     try {
       inputValue.value = eval(current);
