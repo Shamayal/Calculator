@@ -1,10 +1,18 @@
 // Show input/output for operations performed in the calculator
 const inputValue = document.getElementById("display");
 
+let isResult = false; // flag to track if a result is evaluated
+
 document.querySelectorAll(".number").forEach(function (item) {
   item.addEventListener("click", function (e) {
     const value = e.target.innerHTML.trim();
     let current = inputValue.value;
+
+    // If result already evaluated, start a new calculation
+    if (isResult) {
+      current = ""; // Clear the current value
+      isResult = false; // Reset the flag
+    }
     let lastChar = current.slice(-1);
 
     if (current === "NaN" || current === "0") {
@@ -40,8 +48,10 @@ document.querySelectorAll(".operator").forEach(function (item) {
     if (value === "=") {
       try {
         inputValue.value = eval(current);
+        isResult = true;
       } catch {
         inputValue.value = "NaN";
+        isResult = true;
       }
     } else {
       // Avoid consecutive operators
@@ -61,6 +71,7 @@ document.querySelectorAll(".other").forEach(function (item) {
 
     if (value === "AC") {
       inputValue.value = "0";
+      isResult = false;
     } else if (value === "DE") {
       if (current.length > 1) {
         inputValue.value = current.slice(0, -1);
@@ -86,12 +97,14 @@ document.querySelectorAll(".other").forEach(function (item) {
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    
+
     let current = inputValue.value;
     try {
       inputValue.value = eval(current);
+      isResult = true;
     } catch {
       inputValue.value = "NaN";
+      isResult = true;
     }
   }
 });
