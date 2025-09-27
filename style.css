@@ -60,13 +60,6 @@ button {
 .keypad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* grid-gap: 15px; */
   grid-row-gap: 15px;
   grid-column-gap: 10px;
 }
-
-/* .zero {
-  grid-column: span 2;
-  width: 100%;
-  border-radius: 30px;
-} */
