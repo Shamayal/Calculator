@@ -50,6 +50,8 @@ button {
 
 .operator {
   background: #ff9501;
+  font-size: 2rem;
+  padding-bottom: 0.3rem;
 }
 
 .other {
