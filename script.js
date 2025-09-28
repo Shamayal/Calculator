@@ -56,7 +56,9 @@ document.querySelectorAll(".operator").forEach(function (item) {
     // If "=" pressed, perform the calculation
     if (value === "=") {
       try {
-        inputValue.value = eval(current);
+        // Replace ÷ with / and × with * before evaluating
+        let expression = current.replace(/÷/g, "/").replace(/×/g, "*"); 
+        inputValue.value = eval(expression);
         isResult = true; // Set flag to confirm a result is displayed
       } catch {
         inputValue.value = "NaN";
@@ -114,10 +116,12 @@ document.querySelectorAll(".other").forEach(function (item) {
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault(); // Prevent default action
-
     let current = inputValue.value;
+
     try {
-      inputValue.value = eval(current);
+      // Replace ÷ with / and × with * before evaluating
+      let expression = current.replace(/÷/g, "/").replace(/×/g, "*");
+      inputValue.value = eval(expression);
       isResult = true;
     } catch {
       inputValue.value = "NaN";
