@@ -16,8 +16,6 @@ document.querySelectorAll(".number").forEach(function (item) {
       isResult = false; // Reset the flag
     }
 
-    let lastChar = current.slice(-1);
-
     // If display is "NaN" or "0", reset with new input
     if (current === "NaN" || current === "0") {
       current = "";
